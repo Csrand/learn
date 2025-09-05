@@ -1,0 +1,43 @@
+<!-- src/components/BaseHead.astro -->
+---
+const props = defineProps<{
+  title?: string;
+  description?: string;
+  image?: string;
+  url?: string;
+}>();
+
+// Valores padrão
+const pageTitle = props.title || "Clínica Dental | Sorriso Saudável";
+const pageDesc = props.description || "Tratamentos dentários personalizados com tecnologia de ponta.";
+const ogImage = props.image || "/images/og-image.jpg";
+const siteUrl = props.url || "https://seusite.com";
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Título -->
+  <title>{pageTitle}</title>
+
+  <!-- Descrição (SEO) -->
+  <meta name="description" content={pageDesc} />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Open Graph (para Facebook, WhatsApp, etc.) -->
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDesc} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:url" content={siteUrl} />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@seusite" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={pageDesc} />
+  <meta name="twitter:image" content={ogImage} />
+</head>
